@@ -1,3 +1,26 @@
+How to setup this project:
+
+```
+git clone https://github.com/alaminsheikh01/working-with-Weather-Api-react-redux.git
+
+cd <folder-name>
+
+npm install
+
+npm start
+
+```
+
+
+
+![weather](https://user-images.githubusercontent.com/57319298/130360897-b163de5b-5527-4d3c-8dde-a5f3e26daefa.png)
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
