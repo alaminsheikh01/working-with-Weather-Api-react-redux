@@ -40,6 +40,9 @@ function App() {
         </button>
       </form>
       <h2>{weatherinfo.name}</h2>
+      <h3>
+        {new Date(parseInt(weatherinfo.sys?.sunrise * 1000)).toDateString()}
+      </h3>
     </div>
   );
 }
