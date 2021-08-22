@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import moment from "moment";
 
 function App() {
   const [weatherinfo, setWeatherInfo] = useState("");
@@ -31,18 +32,33 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Hello world</h1>
-      <form>
-        <input ref={inputRef} type="text" placeholder="Type the city" />
-        <button onClick={fetchWeatherInfo} type="submit">
-          Click me
-        </button>
-      </form>
-      <h2>{weatherinfo.name}</h2>
-      <h3>
-        {new Date(parseInt(weatherinfo.sys?.sunrise * 1000)).toDateString()}
-      </h3>
+    <div className="app">
+      <div className="app__container">
+        <div className="app__info app__left">
+          <h1>Weather App</h1>
+          <form>
+            <input ref={inputRef} type="text" placeholder="Type the city" />
+            <button onClick={fetchWeatherInfo} type="submit">
+              Click me
+            </button>
+          </form>
+        </div>
+
+        <div className="app__info app__left">
+          <h2>{weatherinfo.name}</h2>
+          <h2>{weatherinfo.main?.temp} Degrees Celsius</h2>
+          <h3>
+            {/* {new Date(
+          parseInt(weatherinfo.sys?.sunrise * 1000)
+        ).toLocaleDateString()} */}
+            {/* // or using moment.js  */}
+            {weatherinfo &&
+              `Sunrise:  ${moment
+                .unix(weatherinfo.sys?.sunrise)
+                .format("LLLL")}`}
+          </h3>
+        </div>
+      </div>
     </div>
   );
 }
