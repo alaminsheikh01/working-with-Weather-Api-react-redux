@@ -6,6 +6,7 @@ import moment from "moment";
 function App() {
   const [weatherinfo, setWeatherInfo] = useState("");
   const inputRef = useRef("");
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     fetchWeatherInfo();
@@ -31,8 +32,27 @@ function App() {
     setWeatherInfo(response.data);
   };
 
+  useEffect(() => {
+    determineBackgroundImage();
+  }, [weatherinfo]);
+
+  const determineBackgroundImage = () => {
+    if (weatherinfo.main?.temp < 25) {
+      setImage(
+        "https://images.unsplash.com/photo-1580495024618-3fb7d34affbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80"
+      );
+    }
+
+    if (weatherinfo.main?.temp >= 25) {
+      setImage(
+        "https://images.unsplash.com/photo-1581041778541-1ac1b92728a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80"
+      );
+    }
+  };
+  console.log(image);
+
   return (
-    <div className="app">
+    <div className="app" style={{ backgroundImage: `url(${image})` }}>
       <div className="app__container">
         <div className="app__info app__left">
           <h1>Weather App</h1>
